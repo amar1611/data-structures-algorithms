@@ -99,9 +99,42 @@ class LinkedList:
         print("\n")
         return
 
+    # Excercise
+    def insert_after_value(self, data_after, data_to_insert):
+        
+        itr = self.head
+        while itr:
+            if itr.data == data_after:
+                node = Node(data_to_insert, itr.next)
+                itr.next = node
+                break
+            itr = itr.next
+
+
+    # Excercise
+    def remove_by_value(self, data):
+        # Remove first node that contains data
+
+        # When there is no node
+        if self.head == None:
+            return
+        
+        # When only one node is present, remove the node
+        if self.head.data == data:
+            self.head = self.head.next
+            return
+
+        itr = self.head
+        while itr.next:
+            if itr.next.data == data:
+                itr.next = itr.next.next
+                break
+            itr = itr.next
+
 
 if __name__ == "__main__":
     
+    # Implementation
     ll = LinkedList()
     ll.insert_at_begining(5)
     ll.insert_at_begining(4)
@@ -123,4 +156,29 @@ if __name__ == "__main__":
     ll.print()
 
     ll.insert_at(2, "c")
+    ll.print()
+
+    ll.insert_after_value("c", "new")
+    ll.print()
+
+    ll.remove_by_value('new')
+    ll.print()
+
+    # Excercise
+    ll = LinkedList()
+    ll.insert_values(["banana","mango","grapes","orange"])
+    ll.print()
+    ll.insert_after_value("mango","apple") # insert apple after mango
+    ll.print()
+    ll.remove_by_value("orange") # remove orange from linked list
+    ll.print()
+    ll.remove_by_value("figs")
+    ll.print()
+    ll.remove_by_value("banana")
+    ll.print()
+    ll.remove_by_value("mango")
+    ll.print()
+    ll.remove_by_value("apple")
+    ll.print()
+    ll.remove_by_value("grapes")
     ll.print()
